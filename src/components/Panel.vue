@@ -2,7 +2,7 @@
   <div class="panel">
     <div class="panel-body" v-if="show">
       <div class="jsons">
-        {{JSON.stringify(this.$store.state.datas)}}
+        {{JSON.stringify(this.$store.state.data)}}
       </div>
       <div class="buttons">
         <button @click="addRow">添加</button>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 export default {
   name: 'panel',
   data() {
@@ -23,11 +23,16 @@ export default {
       show: true
     }
   },
-  methods: mapActions([
-    'addRow',
-    'delRows',
-    'refreshData'
-  ])
+  methods: {
+    ...mapMutations([
+      'addRow',
+      'delRows'
+    ]),
+    ...mapActions([
+      'refreshData'
+    ])
+    
+  }
 }
 </script>
 

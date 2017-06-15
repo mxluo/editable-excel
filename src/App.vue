@@ -1,26 +1,30 @@
 <template>
   <div id="app">
     <Excel></Excel>
-    <Panle></Panle>
+    <Panel></Panel>
   </div>
 </template>
 
 <script>
 import Excel from './components/Excel'
-import Panle from './components/Panle'
-import { mapActions } from 'vuex'
+import Panel from './components/Panel'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'app',
   components: {
     Excel,
-    Panle
+    Panel
   },
-  methods: mapActions([
-    'initDatas',
+  methods: mapMutations([
+    'initData',
+    'updateActiveRow'
   ]),
   created: function() {
-    this.initDatas();
+    this.initData(200);
+    window.onscroll = function () {
+      this.updateActiveRow();
+    }.bind(this)
   }
 }
 </script>
