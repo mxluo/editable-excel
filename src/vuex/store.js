@@ -77,12 +77,18 @@ const actions = {
   }
 }
 const getters = {
-  // topPlaceholderHeight(state) {
-  //   return state.activeRowLow*30;
-  // },
-  // bottomPlaceholderHeight(state) {
-  //   return (state.data.length - state.activeRowHigh)*30;
-  // }
+  marginTop(state) {
+    return state.activeRowLow*30;
+  },
+  marginBottom(state) {
+    return (state.data.length - state.activeRowHigh)*30;
+  },
+  activeData(state) {
+    let activeData = state.data.filter(function(data, index){
+      return (index >=state.activeRowLow && index < state.activeRowHigh);
+    });
+    return activeData;
+  }
 }
 
 export default new Vuex.Store({

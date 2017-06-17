@@ -21,7 +21,7 @@ export default {
     'updateActiveRow'
   ]),
   created: function() {
-    this.initData(200);
+    this.initData(400);
     window.onscroll = function () {
       this.updateActiveRow();
     }.bind(this)
