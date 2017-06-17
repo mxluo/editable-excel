@@ -9,7 +9,7 @@
       </div>
     </div>
     <div v-bind:style="{ marginTop: marginTop + 'px',  marginBottom: marginBottom + 'px'}">
-      <Row v-for="(row, index) in activeData" :rowData="row":rowNum="index+1" :key="row.id"></Row>
+      <Row v-for="(row, index) in activeData" :rowData="row":rowNum="activeRowLow+index+1" :key="row.id"></Row>
     </div>
   </div>
 </template>
@@ -25,7 +25,8 @@ export default {
   computed: {
     ...mapState([
       'title',
-      'checks'
+      'checks',
+      'activeRowLow'
     ]),
     ...mapGetters([
       'activeData',
